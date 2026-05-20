@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Easy Read Resource Index</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <p class="eyebrow">UK accessible information directory</p>
+      <h1>Easy Read Resource Index</h1>
+      <p class="lede">A curated working index of Easy Read and accessible resources relevant to UK health, mental health, CAMHS, autism, ADHD, learning disability, medication, consent, safeguarding, SEND, and NHS access.</p>
+      <p class="disclaimer">This site is an independent resource index. It is not official NHS guidance and resources should be checked for local clinical suitability before use.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="controls" aria-labelledby="filters-heading">
+      <h2 id="filters-heading">Find resources</h2>
+      <label for="searchInput">Search by title, topic, source, audience, or notes</label>
+      <input id="searchInput" type="search" placeholder="Try: ADHD, medication, anxiety, CAMHS, consent" autocomplete="off">
+
+      <div class="filter-grid">
+        <div>
+          <label for="topicFilter">Topic</label>
+          <select id="topicFilter">
+            <option value="">All topics</option>
+          </select>
+        </div>
+        <div>
+          <label for="nhsFilter">NHS relevant</label>
+          <select id="nhsFilter">
+            <option value="">All</option>
+            <option value="true">True</option>
+            <option value="false">False</option>
+          </select>
+        </div>
+        <div>
+          <label for="camhsFilter">CAMHS relevant</label>
+          <select id="camhsFilter">
+            <option value="">All</option>
+            <option value="true">True</option>
+            <option value="false">False</option>
+            <option value="potentially">Potentially</option>
+            <option value="indirect">Indirect</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="summary" aria-live="polite">
+      <p id="resultCount">Loading resources…</p>
+    </section>
+
+    <section id="resourceList" class="resource-list" aria-label="Resource results"></section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Source data: <a href="RESOURCE_INDEX.csv">RESOURCE_INDEX.csv</a>. Governance: <a href="INGESTION_WORKFLOW.md">INGESTION_WORKFLOW.md</a>. Taxonomy: <a href="TOPIC_TAXONOMY.md">TOPIC_TAXONOMY.md</a>.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
