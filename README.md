@@ -1,36 +1,53 @@
-# RESOURCE_INDEX.csv
-Title,Topic,Subtopic,Audience,Age_Group,Source_Organisation,URL,Format,Easy_Read_Quality,Published_Date,Date_Checked,Download_Allowed,Licence_Notes,NHS_Relevant,CAMHS_Relevant,Notes
-Purpose:
-Build a curated repository of UK Easy Read resources relevant to health, mental health, CAMHS, learning disability, autism, medication, consent, rights, safeguarding, SEND, and NHS access.
+# Easy Read Resource Index
 
-Tasks:
-- Identify reputable Easy Read repositories and source organisations.
-- Catalogue resources into structured indexes.
-- Prioritise UK NHS, charity, public-sector, and evidence-informed sources.
-- Avoid duplicate resources.
-- Flag outdated material.
-- Preserve source URLs and publication information.
-- Organise resources by topic and audience.
-- Prefer linking to resources unless download/reuse permissions are clearly allowed.
+A structured repository of UK Easy Read resources relevant to:
 
-Priority source types:
-- NHS England
-- NHS Trusts
-- Mencap
-- Easy Health
-- NICE-linked resources
-- SENDIASS
-- Local authority services
-- Autism and learning disability charities
+- Health
+- Mental health
+- CAMHS
+- Autism
+- ADHD
+- Learning disability
+- Medication information
+- Consent and capacity
+- Safeguarding
+- SEND
+- NHS access and patient information
 
-Output structure:
-- RESOURCE_INDEX.csv
-- SOURCES_REGISTER.csv
-- Topic folders for downloaded resources where appropriate
+## Purpose
 
-Standards:
-- Maintain consistent naming.
-- Include date checked.
-- Include licence/reuse notes where visible.
-- Flag CAMHS-relevant resources.
-- Prefer searchable structured metadata over large unorganised downloads.
+This project aims to create a searchable, curated index of Easy Read resources from NHS organisations, charities, public services, and evidence-informed providers.
+
+The focus is on:
+- accessibility
+- provenance
+- structured metadata
+- clinical usefulness
+- neurodiversity and learning disability inclusion
+
+## Repository Structure
+
+### SOURCES_REGISTER.csv
+Directory of organisations and repositories providing Easy Read materials.
+
+### RESOURCE_INDEX.csv
+Structured index of individual Easy Read resources and leaflets.
+
+### MASTER_INSTRUCTIONS.md
+Core project guidance and indexing standards.
+
+## Intended Future Features
+
+- Searchable website
+- Topic-based filtering
+- CAMHS-specific resource collections
+- NHS service packs
+- Metadata tagging
+- Quality ratings
+- Translation tracking
+- Visual complexity ratings
+- Community contribution workflow
+
+## Current Status
+
+Initial repository and indexing workflow established using GitHub + ChatGPT/Codex integration.
