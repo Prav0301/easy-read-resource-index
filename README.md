@@ -1,5 +1,5 @@
-# Easy Read Repository Project
-
+# RESOURCE_INDEX.csv
+Title,Topic,Subtopic,Audience,Age_Group,Source_Organisation,URL,Format,Easy_Read_Quality,Published_Date,Date_Checked,Download_Allowed,Licence_Notes,NHS_Relevant,CAMHS_Relevant,Notes
 Purpose:
 Build a curated repository of UK Easy Read resources relevant to health, mental health, CAMHS, learning disability, autism, medication, consent, rights, safeguarding, SEND, and NHS access.
 
