@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CAMHS Accessible Information Index</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">UK accessible information directory</p>
+        <h1>CAMHS Accessible Information Index</h1>
+        <p class="lede">A working reference directory of UK Easy Read and accessible health resources for clinicians and care professionals working in CAMHS, neurodevelopmental services, learning disability, and inpatient settings.</p>
+      </div>
+      <aside class="hero-card" aria-label="Repository summary">
+        <strong>Designed for clinical use</strong>
+        <p>For clinicians, families, young people, inpatient teams, neurodevelopmental services, and learning disability practice.</p>
+      </aside>
+    </div>
+  </header>
+
+  <main class="container portal-shell">
+    <section class="notice" aria-label="Scope statement" style="border: 1px solid #cfd8e3; background: #f5f7fa; margin-bottom: 1rem;">
+      <strong>Scope:</strong> This directory is a signposting tool for clinicians. Visit the source sites to identify resources suitable for sharing with young people, families, and carers in your care. A future version may be adapted for direct public access; the current version is not designed for that purpose.
+    </section>
+
+    <section class="notice" aria-label="Medical advice disclaimer" style="border: 1px solid #d9a441; background: #fff4db; margin-bottom: 1rem;">
+      <strong>Clinical disclaimer:</strong> This directory does not constitute medical advice and does not endorse the clinical content of any linked resource. Clinicians remain responsible for assessing the suitability, currency, and accuracy of any resource before sharing it with a patient or family. Always check local trust policies, the resource's review date, and clinical fit for the individual.
+    </section>
+
+    <section class="notice" aria-label="Important note about age tags">
+      <strong>About age and suitability tags:</strong> age tags are working clinical annotations, not source-validated rules. Easy Read material is written for comprehension level, so an adult-looking leaflet may still help an older young person with learning disability or autism. Verify currency and clinical fit before sharing.
+    </section>
+
+    <section class="layout-grid">
+      <aside class="sidebar" aria-label="Resource filters">
+        <div class="sidebar-card">
+          <div class="sidebar-head">
+            <h2>Topics</h2>
+            <button id="resetFilters" type="button">Reset all</button>
+          </div>
+          <nav id="topicSidebar" class="topic-list" aria-label="Topic categories"></nav>
+        </div>
+
+        <div class="sidebar-card">
+          <h2>Age relevance</h2>
+          <div class="chip-group" id="ageChips">
+            <button type="button" class="chip" data-age="Under 5">Under 5</button>
+            <button type="button" class="chip" data-age="5–11">5–11</button>
+            <button type="button" class="chip" data-age="12–17">12–17</button>
+            <button type="button" class="chip" data-age="Transition-age">Transition-age</button>
+            <button type="button" class="chip" data-age="All ages">All ages</button>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <h2>Quick filters</h2>
+          <label class="checkline"><input type="checkbox" id="openOnly" checked> Open access only</label>
+          <label class="checkline"><input type="checkbox" id="verifiedOnly" checked> Verified resources only</label>
+          <p style="font-size: 0.85rem; color: #6b7280; margin-top: 0.75rem;">On by default. Uncheck to include login-required or unverified resources.</p>
+        </div>
+      </aside>
+
+      <section class="browser" aria-label="Resource browser">
+        <section class="controls" aria-labelledby="filters-heading">
+          <h2 id="filters-heading">Find a resource</h2>
+          <label for="searchInput">Search title, source, topic, audience, or notes</label>
+          <input id="searchInput" type="search" placeholder="Try: methylphenidate, consent, crisis, autism, GOSH" autocomplete="off">
+
+          <div class="filter-grid">
+            <div>
+              <label for="contextFilter">Clinical context</label>
+              <select id="contextFilter"><option value="">All contexts</option></select>
+            </div>
+            <div>
+              <label for="audienceFilter">Audience</label>
+              <select id="audienceFilter"><option value="">All audiences</option></select>
+            </div>
+            <div>
+              <label for="formatFilter">Accessibility format</label>
+              <select id="formatFilter"><option value="">All formats</option></select>
+            </div>
+            <div>
+              <label for="sourceTypeFilter">Source type</label>
+              <select id="sourceTypeFilter"><option value="">All source types</option></select>
+            </div>
+            <div>
+              <label for="accessFilter">Access level</label>
+              <select id="accessFilter"><option value="">All access levels</option></select>
+            </div>
+          </div>
+        </section>
+
+        <section class="quick-sections" aria-labelledby="quick-heading">
+          <h2 id="quick-heading">Good starting points</h2>
+          <div class="section-grid">
+            <button class="section-button" data-section="featured">Featured</button>
+            <button class="section-button" data-section="newcamhs">Newly referred to CAMHS</button>
+            <button class="section-button" data-section="medication">Medication discussions</button>
+            <button class="section-button" data-section="inpatient">Inpatient admission</button>
+            <button class="section-button" data-section="rights">Mental Health Act rights</button>
+            <button class="section-button" data-section="neuro">Autism / ADHD / LD</button>
+            <button class="section-button" data-section="crisis">Crisis support</button>
+            <button class="section-button" data-section="navigation">Hospital preparation</button>
+          </div>
+        </section>
+
+        <section class="summary" aria-live="polite">
+          <p id="resultCount">Loading resources…</p>
+        </section>
+
+        <section id="featuredSection" class="curated-section" aria-label="Featured resources"></section>
+        <section id="resourceList" class="resource-list" aria-label="Resource results"></section>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Source data: <a href="RESOURCE_INDEX.csv">RESOURCE_INDEX.csv</a>. Governance: <a href="INGESTION_WORKFLOW.md">INGESTION_WORKFLOW.md</a>. Taxonomy: <a href="TOPIC_TAXONOMY.md">TOPIC_TAXONOMY.md</a>.</p>
+      <p>Not a substitute for clinical judgement, local guidelines, or formal medical advice. For personal health concerns, contact your GP, NHS 111, or in an emergency, 999.</p>
+    </div>
+  </footer>
+
+  <script src="script.js?v=4"></script>
+</body>
+</html>
