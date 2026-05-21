@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Easy Read Resource Index</title>
+  <title>CAMHS Easy Read Resource Directory</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,65 +11,102 @@
     <div class="container hero-grid">
       <div>
         <p class="eyebrow">UK accessible information directory</p>
-        <h1>Easy Read Resource Index</h1>
-        <p class="lede">A curated clinical directory of Easy Read and accessible resources for health, mental health, CAMHS, neurodevelopmental care, learning disability, medication, rights, and NHS access.</p>
+        <h1>CAMHS Easy Read Resource Directory</h1>
+        <p class="lede">A curated clinical directory of Easy Read and accessible resources for CAMHS, neurodevelopmental care, learning disability, medication, rights, hospital preparation, and NHS access.</p>
         <p class="disclaimer">Independent resource index. Not official NHS guidance. Check local clinical suitability, copyright, and review dates before use.</p>
       </div>
       <aside class="hero-card" aria-label="Repository summary">
-        <strong>Designed for</strong>
-        <p>Clinicians, families, young people, inpatient teams, neurodevelopmental services, and learning disability practice.</p>
+        <strong>Designed for clinical use</strong>
+        <p>For clinicians, families, young people, inpatient teams, neurodevelopmental services, and learning disability practice.</p>
       </aside>
     </div>
   </header>
 
-  <main class="container">
-    <section class="controls" aria-labelledby="filters-heading">
-      <h2 id="filters-heading">Find a resource</h2>
-      <label for="searchInput">Search title, source, topic, audience, or notes</label>
-      <input id="searchInput" type="search" placeholder="Try: methylphenidate, consent, crisis, autism, GOSH" autocomplete="off">
-
-      <div class="filter-grid">
-        <div>
-          <label for="contextFilter">Clinical context</label>
-          <select id="contextFilter"><option value="">All contexts</option></select>
-        </div>
-        <div>
-          <label for="audienceFilter">Audience</label>
-          <select id="audienceFilter"><option value="">All audiences</option></select>
-        </div>
-        <div>
-          <label for="formatFilter">Accessibility format</label>
-          <select id="formatFilter"><option value="">All formats</option></select>
-        </div>
-        <div>
-          <label for="sourceTypeFilter">Source type</label>
-          <select id="sourceTypeFilter"><option value="">All source types</option></select>
-        </div>
-        <div>
-          <label for="accessFilter">Access level</label>
-          <select id="accessFilter"><option value="">All access levels</option></select>
-        </div>
-      </div>
+  <main class="container portal-shell">
+    <section class="notice" aria-label="Important note about age tags">
+      <strong>About age and suitability tags:</strong> age tags are working clinical annotations, not source-validated rules. Easy Read material is written for comprehension level, so an adult-looking leaflet may still help an older young person with learning disability or autism. Verify currency and clinical fit before sharing.
     </section>
 
-    <section class="summary" aria-live="polite">
-      <p id="resultCount">Loading resources…</p>
-    </section>
+    <section class="layout-grid">
+      <aside class="sidebar" aria-label="Resource filters">
+        <div class="sidebar-card">
+          <div class="sidebar-head">
+            <h2>Topics</h2>
+            <button id="resetFilters" type="button">Reset all</button>
+          </div>
+          <nav id="topicSidebar" class="topic-list" aria-label="Topic categories"></nav>
+        </div>
 
-    <section class="quick-sections" aria-labelledby="quick-heading">
-      <h2 id="quick-heading">Good starting points</h2>
-      <div class="section-grid">
-        <button class="section-button" data-section="featured">Featured Resources</button>
-        <button class="section-button" data-section="young">Young People &amp; Families</button>
-        <button class="section-button" data-section="medication">Medication Information</button>
-        <button class="section-button" data-section="crisis">Mental Health &amp; Crisis</button>
-        <button class="section-button" data-section="neuro">Autism &amp; Neurodevelopment</button>
-        <button class="section-button" data-section="navigation">Hospital &amp; NHS Navigation</button>
-      </div>
-    </section>
+        <div class="sidebar-card">
+          <h2>Age relevance</h2>
+          <div class="chip-group" id="ageChips">
+            <button type="button" class="chip" data-age="Under 5">Under 5</button>
+            <button type="button" class="chip" data-age="5–11">5–11</button>
+            <button type="button" class="chip" data-age="12–17">12–17</button>
+            <button type="button" class="chip" data-age="Transition-age">Transition-age</button>
+            <button type="button" class="chip" data-age="All ages">All ages</button>
+          </div>
+        </div>
 
-    <section id="featuredSection" class="curated-section" aria-label="Featured resources"></section>
-    <section id="resourceList" class="resource-list" aria-label="Resource results"></section>
+        <div class="sidebar-card">
+          <h2>Quick filters</h2>
+          <label class="checkline"><input type="checkbox" id="openOnly"> Open access only</label>
+          <label class="checkline"><input type="checkbox" id="verifiedOnly"> Verified resources only</label>
+        </div>
+      </aside>
+
+      <section class="browser" aria-label="Resource browser">
+        <section class="controls" aria-labelledby="filters-heading">
+          <h2 id="filters-heading">Find a resource</h2>
+          <label for="searchInput">Search title, source, topic, audience, or notes</label>
+          <input id="searchInput" type="search" placeholder="Try: methylphenidate, consent, crisis, autism, GOSH" autocomplete="off">
+
+          <div class="filter-grid">
+            <div>
+              <label for="contextFilter">Clinical context</label>
+              <select id="contextFilter"><option value="">All contexts</option></select>
+            </div>
+            <div>
+              <label for="audienceFilter">Audience</label>
+              <select id="audienceFilter"><option value="">All audiences</option></select>
+            </div>
+            <div>
+              <label for="formatFilter">Accessibility format</label>
+              <select id="formatFilter"><option value="">All formats</option></select>
+            </div>
+            <div>
+              <label for="sourceTypeFilter">Source type</label>
+              <select id="sourceTypeFilter"><option value="">All source types</option></select>
+            </div>
+            <div>
+              <label for="accessFilter">Access level</label>
+              <select id="accessFilter"><option value="">All access levels</option></select>
+            </div>
+          </div>
+        </section>
+
+        <section class="quick-sections" aria-labelledby="quick-heading">
+          <h2 id="quick-heading">Good starting points</h2>
+          <div class="section-grid">
+            <button class="section-button" data-section="featured">Featured</button>
+            <button class="section-button" data-section="newcamhs">Newly referred to CAMHS</button>
+            <button class="section-button" data-section="medication">Medication discussions</button>
+            <button class="section-button" data-section="inpatient">Inpatient admission</button>
+            <button class="section-button" data-section="rights">Mental Health Act rights</button>
+            <button class="section-button" data-section="neuro">Autism / ADHD / LD</button>
+            <button class="section-button" data-section="crisis">Crisis support</button>
+            <button class="section-button" data-section="navigation">Hospital preparation</button>
+          </div>
+        </section>
+
+        <section class="summary" aria-live="polite">
+          <p id="resultCount">Loading resources…</p>
+        </section>
+
+        <section id="featuredSection" class="curated-section" aria-label="Featured resources"></section>
+        <section id="resourceList" class="resource-list" aria-label="Resource results"></section>
+      </section>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -78,6 +115,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>
