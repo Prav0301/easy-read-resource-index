@@ -50,6 +50,7 @@ async function loadResources() {
           <span class="badge">${resource.Topic || 'General'}</span>
           <span class="badge">NHS: ${resource.NHS_Relevant}</span>
           <span class="badge">CAMHS: ${resource.CAMHS_Relevant}</span>
+          <span class="badge">Access: ${resource.Access_Level || 'Unknown'}</span>
         </div>
         <p>${resource.Notes || ''}</p>
         <a class="resource-link" href="${resource.URL}" target="_blank" rel="noopener noreferrer">Open resource</a>
