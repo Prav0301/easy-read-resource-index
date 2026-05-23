@@ -1,205 +1,444 @@
+/* ==========================================================================
+   1. Core Variables & Base Reset
+   ========================================================================== */
+:root {
+  /* Soft Pastel Color Palette */
+  --bg-main: #f8fafc;           /* Light slate/cream tinted background */
+  --text-main: #2d3748;         /* Soft dark charcoal for high legibility */
+  --text-muted: #64748b;        /* Slate gray for secondary text */
+  
+  /* Brand Pastel Accents */
+  --pastel-blue: #e0f2fe;       /* Sky blue background */
+  --pastel-blue-dark: #0369a1;  /* Deeper contrast blue text */
+  --pastel-sage: #dcfce7;       /* Soft sage green for open access */
+  --pastel-sage-dark: #15803d;  /* Dark green text */
+  --pastel-lavender: #f3e8ff;   /* Lavender tint for featured elements */
+  --pastel-lavender-dark: #6b21a8; /* Deep lavender border accent */
+  --pastel-coral: #ffedd5;      /* Mild warm tint */
+  --pastel-coral-dark: #b45309; /* Warm tint text */
+  
+  /* Borders and UI Element Details */
+  --border-color: #e2e8f0;      /* Gentle border separation line */
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-round: 999px;
+  --transition: all 0.25s ease;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* Modern clean font stack optimized for screen readability */
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   line-height: 1.6;
-  background: #f4f7fb;
-  color: #1f2933;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
 }
 
 .container {
-  width: min(1180px, calc(100% - 2rem));
+  width: min(1200px, calc(100% - 2.5rem));
   margin: 0 auto;
 }
 
+/* ==========================================================================
+   2. Header & Banner Layout
+   ========================================================================== */
 .site-header {
-  background: linear-gradient(135deg, #005eb8, #004a93);
-  color: white;
-  padding: 3rem 0 4rem;
+  /* Soft gradient blending muted lavender/blue tones instead of deep primary blues */
+  background: linear-gradient(135deg, #e0e7ff 0%, #e0f2fe 100%);
+  color: #1e293b;
+  padding: 3.5rem 0 5rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 2rem;
-}
-
-.hero-card {
-  background: rgba(255,255,255,0.12);
-  padding: 1.25rem;
-  border-radius: 18px;
-  backdrop-filter: blur(6px);
+  gap: 2.5rem;
+  align-items: center;
 }
 
 .eyebrow {
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.8rem;
-  opacity: 0.85;
+  letter-spacing: 0.06em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #4f46e5; /* Clean contrasting pastel purple */
+  margin-bottom: 0.5rem;
 }
 
 h1 {
-  margin-bottom: 0.75rem;
-  font-size: clamp(2rem, 5vw, 3.3rem);
+  margin: 0 0 1rem 0;
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #0f172a;
 }
 
 .lede {
-  max-width: 820px;
+  max-width: 780px;
   font-size: 1.1rem;
+  color: #334155;
+  margin-bottom: 0;
 }
 
 .disclaimer {
-  margin-top: 1rem;
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   3. Workspace Layout Shell (Grid System)
+   ========================================================================== */
+.portal-shell {
+  margin-top: -3rem; /* Overlap header structure gracefully */
+}
+
+.notice {
+  background-color: var(--pastel-coral);
+  color: var(--pastel-coral-dark);
+  padding: 1.2rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 2rem;
   font-size: 0.95rem;
-  opacity: 0.92;
+  border: 1px solid #fed7aa;
+}
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+}
+
+/* ==========================================================================
+   4. Sidebar Controls, Chips, and Toggles
+   ========================================================================== */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sidebar-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+}
+
+.sidebar-card h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.sidebar-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.sidebar-head h2 {
+  margin: 0;
+}
+
+#resetFilters {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+#resetFilters:hover {
+  color: #0f172a;
+}
+
+/* Interactive Age Filter Chips */
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: var(--text-main);
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.chip:hover {
+  background: #e2e8f0;
+}
+
+.chip.active {
+  background: var(--pastel-blue);
+  border-color: #bae6fd;
+  color: var(--pastel-blue-dark);
+  font-weight: 600;
+}
+
+/* Quick Filter Checkboxes */
+.checkline {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+}
+
+.checkline input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--pastel-blue-dark);
+  cursor: pointer;
+}
+
+.muted { color: var(--text-muted); }
+.small { font-size: 0.85rem; }
+
+/* ==========================================================================
+   5. Search Browser & Core Search Fields
+   ========================================================================== */
+.browser {
+  display: flex;
+  flex-direction: column;
 }
 
 .controls {
   background: white;
-  margin-top: -2rem;
-  padding: 1.5rem;
-  border-radius: 18px;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+  margin-bottom: 2rem;
 }
 
-.controls input,
-.controls select {
+.controls h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.controls label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.controls input[type="search"] {
   width: 100%;
-  padding: 0.78rem;
-  margin-top: 0.35rem;
-  border: 1px solid #cbd2d9;
-  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
   font-size: 1rem;
   box-sizing: border-box;
-  background: white;
+  background-color: #f8fafc;
+  transition: var(--transition);
+}
+
+.controls input[type="search"]:focus {
+  outline: none;
+  border-color: #93c5fd;
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(147, 197, 253, 0.25);
 }
 
 .filter-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 1rem;
-  margin-top: 1rem;
 }
 
-.summary {
-  margin: 1.5rem 0 1rem;
-  color: #52606d;
+.filter-grid select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.35rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 0.92rem;
+  background-color: #f8fafc;
+  cursor: pointer;
 }
 
-.quick-sections {
-  margin: 1.5rem 0 2rem;
+/* Good Starting Points Grid Buttons */
+.quick-sections h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 .section-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 0.75rem;
 }
 
 .section-button {
-  border: none;
-  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
   background: white;
   padding: 1rem;
   text-align: left;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 600;
+  color: var(--text-main);
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  transition: var(--transition);
 }
 
 .section-button:hover {
+  background: #f8fafc;
   transform: translateY(-1px);
+  border-color: #cbd5e1;
 }
 
-.curated-section {
-  margin-bottom: 2rem;
+.section-button.active {
+  background: var(--pastel-blue);
+  border-color: #bae6fd;
+  color: var(--pastel-blue-dark);
+}
+
+/* ==========================================================================
+   6. Resource Results Cards & Badges
+   ========================================================================== */
+.summary {
+  margin: 1rem 0;
+  font-weight: 600;
+  font-size: 0.95rem;
 }
 
 .resource-list {
   display: grid;
-  gap: 1rem;
-  margin-bottom: 3rem;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.featured-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .resource-card {
   background: white;
-  border-radius: 18px;
-  padding: 1.3rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  border: 1px solid #e6edf5;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
 }
 
+.resource-card:hover {
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.03);
+}
+
+/* Highlight Featured Cards with Soft Muted Purple side accents */
 .resource-card.featured {
-  border-left: 6px solid #005eb8;
+  background: linear-gradient(to right, #faf5ff, white);
+  border-left: 5px solid var(--pastel-lavender-dark);
 }
 
 .resource-card.restricted {
-  opacity: 0.72;
+  opacity: 0.65;
+  background-color: #f8fafc;
 }
 
 .resource-card h3 {
-  margin-top: 0;
-  margin-bottom: 0.35rem;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
 }
 
 .source-line {
-  color: #52606d;
-  margin-bottom: 0.7rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
 }
 
 .meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 0.8rem 0;
+  gap: 0.4rem;
+  margin: 1rem 0;
 }
 
+/* Badges Styled using Soft Contrast Tones */
 .badge {
-  background: #e8f0fb;
-  color: #003b75;
-  padding: 0.32rem 0.7rem;
-  border-radius: 999px;
-  font-size: 0.82rem;
+  background: #f1f5f9;
+  color: #475569;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-round);
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 .badge.access-open {
-  background: #e8f7ee;
-  color: #1b6b3d;
+  background-color: var(--pastel-sage);
+  color: var(--pastel-sage-dark);
 }
 
 .badge.access-restricted {
-  background: #f3f4f6;
-  color: #6b7280;
+  background-color: #fee2e2;
+  color: #991b1b;
 }
 
 .resource-link {
   display: inline-block;
-  margin-top: 0.75rem;
-  color: #005eb8;
+  margin-top: 0.5rem;
+  color: #2563eb;
   font-weight: 600;
+  font-size: 0.95rem;
   text-decoration: none;
+  transition: var(--transition);
 }
 
 .resource-link:hover {
+  color: #1d4ed8;
   text-decoration: underline;
 }
 
+/* ==========================================================================
+   7. Footer Settings & Media Breaks
+   ========================================================================== */
 .site-footer {
-  padding: 2rem 0 3rem;
-  font-size: 0.95rem;
-  color: #52606d;
+  padding: 4rem 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color);
 }
 
-@media (max-width: 800px) {
-  .hero-grid {
+.site-footer a {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .layout-grid {
     grid-template-columns: 1fr;
   }
-
-  .controls {
-    margin-top: -1rem;
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
-}
-
-a {
-  color: #005eb8;
+  .controls {
+    margin-top: 0;
+  }
 }
