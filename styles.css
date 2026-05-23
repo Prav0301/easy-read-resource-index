@@ -100,11 +100,12 @@ h1 {
 .notice {
   background-color: var(--pastel-coral);
   color: var(--pastel-coral-dark);
-  padding: 1.2rem;
+  padding: 1.25rem 1.5rem; /* FIXED: Increased padding for a clean, readable text container balance */
   border-radius: var(--radius-md);
   margin-bottom: 2rem;
   font-size: 0.95rem;
   border: 1px solid #fed7aa;
+  box-sizing: border-box; /* Ensures padding doesn't stretch the box wider than the screen */
 }
 
 .layout-grid {
